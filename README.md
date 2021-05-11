@@ -22,9 +22,7 @@ Afterwards enter the following command to build and install surf:
 
 Or install from the aur repository:
       
-      yay -S surf-ashin-git 
-                or
-       paru -S surf-ashin-git
+      yay -S surf-ashin-git ; paru -S surf-ashin-git
       
 
 Running surf
@@ -40,7 +38,9 @@ For running surf in tabbed[1] there is a script included in the distribution,
 which is run like this:
 
 	surf-open.sh [URI]
-          or
+
+# Or type this in the terminal:
+
 	tabbed surf -e
 
 Further invocations of the script will run surf with the specified URI in this

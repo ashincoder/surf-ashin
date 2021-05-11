@@ -34,12 +34,7 @@ See the manpage for further options.
 
 Running surf in tabbed
 ----------------------
-For running surf in tabbed[1] there is a script included in the distribution,
-which is run like this:
-
-	surf-open.sh [URI]
-
-# Or type this in the terminal:
+Use this commmand:
 
 	tabbed surf -e
 

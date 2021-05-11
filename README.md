@@ -41,7 +41,7 @@ which is run like this:
 
 	surf-open.sh [URI]
           or
-  tabbed surf -e
+	tabbed surf -e
 
 Further invocations of the script will run surf with the specified URI in this
 instance of tabbed.

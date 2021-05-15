@@ -29,7 +29,7 @@ pkgver() {
 
 build() {
   cd surf-ashin
-  make 
+  make PREFIX=/usr 
 }
 
 package() {

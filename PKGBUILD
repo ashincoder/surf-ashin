@@ -9,9 +9,10 @@ url='https://github.com/ashincoder/surf-ashin.git'
 license=('MIT')
 depends=(webkit2gtk xorg-xprop)
 optdepends=('ca-certificates: SSL verification'
-            'curl: default download handler')
-makedepends=(git dmenu-ashin-git)
-checkdepends=(dmenu-ashin-git)
+            'curl: default download handler'
+            'dmenu-ashin-git: for address bar')
+makedepends=(git)
+checkdepends=()
 provides=(surf)
 conflicts=(surf)
 replaces=()

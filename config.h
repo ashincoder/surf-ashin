@@ -1,14 +1,3 @@
-/*  ▄▄▄        ██████  ██░ ██  ██▓ ███▄    █  */
-/* ▒████▄    ▒██    ▒ ▓██░ ██▒▓██▒ ██ ▀█   █  */
-/* ▒██  ▀█▄  ░ ▓██▄   ▒██▀▀██░▒██▒▓██  ▀█ ██▒ */
-/* ░██▄▄▄▄██   ▒   ██▒░▓█ ░██ ░██░▓██▒  ▐▌██▒ */
-/*  ▓█   ▓██▒▒██████▒▒░▓█▒░██▓░██░▒██░   ▓██░ */
-/*  ▒▒   ▓▒█░▒ ▒▓▒ ▒ ░ ▒ ░░▒░▒░▓  ░ ▒░   ▒ ▒  */
-/*   ▒   ▒▒ ░░ ░▒  ░ ░ ▒ ░▒░ ░ ▒ ░░ ░░   ░ ▒░ */
-/*   ░   ▒   ░  ░  ░   ░  ░░ ░ ▒ ░   ░   ░ ░  */
-/*       ░  ░      ░   ░  ░  ░ ░           ░  */
-/*                                            */
-
 /* modifier 0 means no modifier */
 static int surfuseragent    = 1;  /* Append Surf version to default WebKit user agent */
 static char *fulluseragent  = ""; /* Or override the whole user agent string */
@@ -81,16 +70,16 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
              "prop=\"$(printf '%b' \"$(xprop -id $1 $2 " \
              "| sed \"s/^$2(STRING) = //;s/^\\\"\\(.*\\)\\\"$/\\1/\" && cat ~/.surf/bookmarks)\" " \
              "| dmenu -l 10 -p \"$4\" -w $1)\" && " \
-    		"xprop -id $2 -f $1 8u -set $1 \"$prop\"", \
+             "xprop -id $1 -f $3 8s -set $3 \"$prop\"", \
              "surf-setprop", winid, r, s, p, NULL \
         } \
 }
-
 /* DOWNLOAD(URI, referer) */
 #define DOWNLOAD(u, r) { \
         .v = (const char *[]){ "st", "-e", "/bin/sh", "-c",\
-             "curl -g -L -J -O -A \"$1\" -b \"$2\" -c \"$2\"" \
-             " -e \"$3\" \"$4\"; read", \
+             "[ -f ~/.surf/config ] && . ~/.surf/config; " \
+             "curl -g -L -J -A \"$1\" -b \"$2\" -c \"$2\"" \
+             " -e \"$3\" \"$4\" -o \"${download:-$HOME}/$(basename $4)\"; read", \
              "surf-download", useragent, cookiefile, r, u, NULL \
         } \
 }
@@ -128,13 +117,9 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
  * The iteration will stop at the first match, beginning at the beginning of
  * the list.
  */
-
 static SiteSpecific styles[] = {
 	/* regexp               file in $styledir */
-	/* { ".*",                     "default.css" }, */
-	{ ".*archlinux.org.*",      "archlinux.css" },
-	{ ".*suckless.org.*",       "suckless.css" },
-	{ ".*wikipedia.org.*",      "wikipedia.css" },
+	{ ".*",                 "default.css" },
 };
 
 /* certificates */
@@ -219,4 +204,4 @@ static Button buttons[] = {
 	{ OnMedia,      MODKEY,         1,      clickexternplayer, { 0 },       1 },
 };
 
-#define HOMEPAGE "https://duckduckgo.com"
+#define HOMEPAGE "https://duckduckgo.com/"

@@ -29,3 +29,4 @@ else
 		surf -e "$xid" "$uri" >/dev/null 2>&1 &
 	fi
 fi
+

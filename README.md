@@ -20,11 +20,6 @@ Afterwards enter the following command to build and install surf:
 
     sudo make clean install
 
-Or install from the aur repository:
-      
-      yay -S surf-ashin-git ; paru -S surf-ashin-git
-      
-
 Running surf
 ------------
 run
